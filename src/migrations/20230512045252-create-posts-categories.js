@@ -2,28 +2,34 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('posts_categories', {
-      id: {
+      post_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      post_id: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.INTEGER,
+        references: {
+          // Informa a tabela da referência da associação
+          model: 'users',
+          // Informa a coluna da referência que é a chave correspondente
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       category_id: {
-        type: Sequelize.BOOLEAN
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
-      }
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: Sequelize.INTEGER,
+          references: {
+            // Informa a tabela da referência da associação
+            model: 'users',
+            // Informa a coluna da referência que é a chave correspondente
+            key: 'id',
+          },
+          onUpdate: 'CASCADE',
+          onDelete: 'CASCADE',
+        },
     });
   },
   down: async (queryInterface, Sequelize) => {

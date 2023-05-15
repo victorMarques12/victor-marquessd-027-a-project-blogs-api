@@ -9,24 +9,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       content: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       user_id: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.INTEGER,
+        references: {
+          // Informa a tabela da referência da associação
+          model: 'users',
+          // Informa a coluna da referência que é a chave correspondente
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
-      }
     });
   },
   down: async (queryInterface, Sequelize) => {
