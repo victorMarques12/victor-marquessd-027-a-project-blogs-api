@@ -16,8 +16,17 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      published: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      updated: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
       user_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           // Informa a tabela da referência da associação
           model: 'users',

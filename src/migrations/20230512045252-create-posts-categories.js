@@ -4,12 +4,11 @@ module.exports = {
     await queryInterface.createTable('posts_categories', {
       post_id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
         references: {
           // Informa a tabela da referência da associação
-          model: 'users',
+          model: 'blog_posts',
           // Informa a coluna da referência que é a chave correspondente
           key: 'id',
         },
@@ -18,12 +17,11 @@ module.exports = {
       },
       category_id: {
           allowNull: false,
-          autoIncrement: true,
           primaryKey: true,
           type: Sequelize.INTEGER,
           references: {
             // Informa a tabela da referência da associação
-            model: 'users',
+            model: 'categories',
             // Informa a coluna da referência que é a chave correspondente
             key: 'id',
           },
