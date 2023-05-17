@@ -1,4 +1,4 @@
-const validadeName = async (req, res, next) => {
+const validaName = async (req, res, next) => {
     const { displayName } = req.body;
     if (displayName.length < 8) {
       return res.status(400).json({
@@ -9,4 +9,4 @@ const validadeName = async (req, res, next) => {
     return next();
   };
   
-  module.exports = validadeName;
+  module.exports = validaName;
