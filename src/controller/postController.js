@@ -17,9 +17,9 @@ const getAll = async (_req, res) => {
 
 const create = async (req, res) => {
   const post = req.body;
-  const userId = req.payload.data.id;
+  const postId = req.payload.data.id;
 
-  const { type, message, data } = await postService.create({ ...post, userId });
+  const { type, message, data } = await postService.create({ ...post, postId });
 
   if (type) return res.status(type).json({ message });
 
